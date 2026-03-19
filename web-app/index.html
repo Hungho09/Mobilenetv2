@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileNetV2 Face Recognition | AI Powered</title>
+    <meta name="description" content="Khám phá ứng dụng nhận diện khuôn mặt dựa trên thuật toán MobileNetV2 - Tối ưu cho thiết bị di động với kiến trúc Inverted Residuals và Linear Bottlenecks.">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <span class="badge">MobileNetV2 Architecture</span>
+        <h1>Face Recognition AI</h1>
+        <p>Real-time Face Detection & Recognition optimized for efficiency</p>
+    </header>
+
+    <main class="main-container">
+        <section class="video-section" id="canvas-container">
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <p id="loading-status">Đang tải mô hình MobileNetV2...</p>
+            </div>
+            <video id="video" autoplay muted playsinline></video>
+            <!-- Canvas sẽ được tạo động bằng JS -->
+            
+            <div class="stats-panel">
+                <div class="stat-item">
+                    <span class="stat-value" id="fps-counter">0</span>
+                    <span class="stat-label">FPS</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="face-count">0</span>
+                    <span class="stat-label">Faces</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-cards">
+            <div class="card">
+                <h3><svg padding="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5.07 19.07l13.86-13.86M19.07 19.07L5.07 5.07"/></svg>Inverted Residuals</h3>
+                <p>Khác với Residual truyền thống, MobileNetV2 sử dụng shortcut giữa các lớp bottleneck mỏng. Điều này giúp giảm đáng kể bộ nhớ và tăng tốc độ xử lý trên CPU/GPU di động.</p>
+            </div>
+            <div class="card">
+                <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Linear Bottleneck</h3>
+                <p>Loại bỏ hàm kích hoạt phi tuyến tính ở lớp bottleneck hẹp giúp bảo toàn thông tin quan trọng của manifold đặc trưng, ngăn chặn sự sụp đổ của biểu diễn (representation collapse).</p>
+            </div>
+            <div class="card">
+                <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Mobile Efficiency</h3>
+                <p>Depthwise Separable Convolutions giúp giảm số lượng tham số và phép tính toán lên tới 8-9 lần so với tích chập thông thường mà vẫn giữ được độ chính xác cao.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Dựa trên bài báo nghiên cứu của Mark Sandler, Andrew Howard, et al. (Google Inc. 2019)</p>
+        <p style="margin-top: 0.5rem; opacity: 0.5;">&copy; 2026 MobileNetV2 AI Experience</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script>
+    <script defer src="script.js"></script>
+</body>
+</html>
