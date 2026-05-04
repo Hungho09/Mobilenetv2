@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  ai-engine:
+    build: ./ai-engine
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ai-engine:/app
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8080"
+    depends_on:
+      - ai-engine
+
+  frontend-web:
+    build: ./frontend-web
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "8080:80"
+    volumes:
+      - ./infrastructure/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend-web

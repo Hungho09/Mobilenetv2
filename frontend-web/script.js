@@ -80,7 +80,29 @@ async function onPlay() {
     }, 100); // 10 FPS cho nhẹ nhưng mượt mà
 }
 
+async function fetchBackendInfo() {
+    const backendInfoDiv = document.getElementById('backend-info');
+    try {
+        // Thử kết nối tới backend (mặc định port 8080 nếu chạy manual, hoặc qua proxy nếu chạy docker)
+        const response = await fetch('http://localhost:8080/api/info');
+        const data = await response.json();
+        
+        backendInfoDiv.innerHTML = `
+            <p style="color: #4ade80; font-weight: 600;">● Online</p>
+            <p>Engine: ${data.engine}</p>
+            <p>Accuracy: ${data.stats.accuracy}</p>
+            <p>Latency: ${data.stats.latency}</p>
+        `;
+    } catch (err) {
+        backendInfoDiv.innerHTML = `
+            <p style="color: #f87171; font-weight: 600;">● Offline</p>
+            <p style="font-size: 0.8rem; opacity: 0.7;">Vui lòng chạy backend để xem dữ liệu AI.</p>
+        `;
+    }
+}
+
 async function init() {
+    await fetchBackendInfo();
     await loadModels();
     await startVideo();
     video.addEventListener('play', onPlay);

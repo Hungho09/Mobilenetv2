@@ -21,35 +21,104 @@ Một dự án nghiên cứu và ứng dụng thực tế về thuật toán **M
 
 ```text
 mobilenetv2-face-recognition/
-├── core/                   # Triển khai thuật toán chính (Python/PyTorch)
-│   └── mobilenet_v2.py     # Mô hình kiến trúc chi tiết (Table 1 & 2)
-├── web-app/                # Ứng dụng web thực tế (Front-end)
-│   ├── index.html          # Cấu trúc ứng dụng & SEO
-│   ├── index.css           # Giao diện Premium & Animations
-│   └── script.js           # Logic xử lý AI & Camera
-├── docs/                   # Tài liệu hướng dẫn và lý thuyết
-│   └── paper_summary.md    # Tóm tắt bài báo MobileNetV2
-├── requirements.txt        # Các thư viện Python cần thiết
-├── .gitignore              # Các file bỏ qua khi up lên GitHub
-└── LICENSE                 # Giấy phép MIT
+├── ai-engine/              # Python (MobileNetV2 và xử lý ảnh)
+│   ├── mobilenet_v2.py     # Kiến trúc mô hình
+│   └── requirements.txt    # Thư viện AI cần thiết
+├── backend/                # Java Spring Boot / Node.js (NestJS)
+├── frontend-web/           # Angular Web App
+├── frontend-mobile/        # Flutter Mobile App
+├── infrastructure/         # Docker, Nginx, CI/CD
+├── docs/                   # Sơ đồ Database, API Spec
+├── .gitignore              # Git configuration
+└── LICENSE                 # MIT License
 ```
 
 ---
 
-## 🚀 Hướng dẫn Sử dụng (Quick Start)
+## 🚀 Hướng dẫn Chạy & Kiểm thử (Setup & Testing)
 
-### 1. Trải nghiệm Ứng dụng Web
-Không cần cài đặt phức tạp, bạn chỉ cần mở file `web-app/index.html` bằng trình duyệt (Chrome/Edge khuyến nghị) và cấp quyền Camera.
+Dưới đây là các bước chi tiết để bạn có thể cài đặt và kiểm tra từng thành phần của dự án.
 
-### 2. Chạy Mô hình Python (Nghiên cứu)
-Cài đặt các thư viện cần thiết:
-```bash
-pip install -r requirements.txt
-```
-Kiểm tra kiến trúc mô hình:
-```bash
-python core/mobilenet_v2.py
-```
+### ⚡ Chạy nhanh (Quick Start)
+Nếu bạn muốn khởi động nhanh toàn bộ hệ thống, hãy thực hiện:
+
+| Thành phần | Lệnh thực thi | Cửa sổ Terminal |
+| :--- | :--- | :--- |
+| **1. Backend** | `cd backend && npm install express cors && node index.js` | Terminal 1 |
+| **2. Frontend** | `python3 -m http.server 8080 --directory frontend-web` | Terminal 2 |
+| **3. AI Engine** | `cd ai-engine && pip install -r requirements.txt && python mobilenet_v2.py` | Terminal 3 |
+| **4. Toàn bộ (Docker)** | `docker-compose -f infrastructure/docker-compose.yml up --build` | 1 Terminal duy nhất |
+
+---
+
+### 🧠 1. AI Engine (Kiểm tra kiến trúc MobileNetV2)
+Thành phần này được viết bằng Python và PyTorch để mô phỏng lại kiến trúc mạng nơ-ron.
+
+**Các bước thực hiện:**
+1. Di chuyển vào thư mục `ai-engine`:
+   ```bash
+   cd ai-engine
+   ```
+2. Cài đặt các thư viện cần thiết:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Chạy script kiểm thử kiến trúc:
+   ```bash
+   python mobilenet_v2.py
+   ```
+   *Kết quả mong đợi:* Màn hình hiển thị "Kiến trúc MobileNetV2 đã hoàn thành".
+
+---
+
+### ⚙️ 2. Backend API (Cung cấp dữ liệu hệ thống)
+Backend được xây dựng bằng Node.js để quản lý thông tin và trạng thái của mô hình AI.
+
+**Các bước thực hiện:**
+1. Mở một Terminal mới và di chuyển vào thư mục `backend`:
+   ```bash
+   cd backend
+   ```
+2. Cài đặt các thư viện cần thiết:
+   ```bash
+   npm install express cors
+   ```
+3. Khởi chạy server:
+   ```bash
+   node index.js
+   ```
+   *Kết quả mong đợi:* Terminal báo `Backend listening at http://localhost:3000`.
+
+---
+
+### 🌐 3. Frontend Web (Giao diện người dùng)
+Giao diện Web giúp bạn trải nghiệm nhận diện khuôn mặt và kết nối trực tiếp với Backend.
+
+**Các bước thực hiện:**
+1. Mở một Terminal mới (khác với terminal chạy Backend) và đảm bảo bạn đang ở thư mục gốc của dự án.
+2. Chạy server ảo cho Frontend:
+   ```bash
+   python3 -m http.server 8080 --directory frontend-web
+   ```
+3. Truy cập trình duyệt: [http://localhost:8080](http://localhost:8080)
+   *Kết quả mong đợi:* Giao diện hiện ra, Camera hoạt động và phần "Backend Status" sẽ hiển thị trạng thái **Online** màu xanh.
+
+---
+
+### 🐳 4. Chạy với Docker (Khuyên dùng - Nhanh nhất)
+Nếu bạn có Docker, đây là cách đơn giản nhất để chạy toàn bộ hệ thống cùng lúc mà không cần mở nhiều Terminal.
+
+1. Tại thư mục gốc của dự án, chạy lệnh:
+   ```bash
+   docker-compose -f infrastructure/docker-compose.yml up --build
+   ```
+2. Sau khi build xong, truy cập: [http://localhost](http://localhost) (Nginx sẽ tự động điều phối cả Frontend và Backend).
+
+---
+
+### 🧪 4. Quy trình Kiểm thử (Testing Workflow)
+- **Unit Test (Model):** Đảm bảo rằng việc thay đổi thông số `width_mult` trong `mobilenet_v2.py` vẫn cho ra output đúng định dạng.
+- **Integration Test:** Kiểm tra khả năng kết nối giữa Camera và thư viện `face-api.js` trên giao diện Web.
 
 ---
 

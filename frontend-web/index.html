@@ -36,6 +36,12 @@
         </section>
 
         <section class="info-cards">
+            <div class="card" id="backend-card">
+                <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Backend Status</h3>
+                <div id="backend-info">
+                    <p>Đang kết nối tới server...</p>
+                </div>
+            </div>
             <div class="card">
                 <h3><svg padding="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5.07 19.07l13.86-13.86M19.07 19.07L5.07 5.07"/></svg>Inverted Residuals</h3>
                 <p>Khác với Residual truyền thống, MobileNetV2 sử dụng shortcut giữa các lớp bottleneck mỏng. Điều này giúp giảm đáng kể bộ nhớ và tăng tốc độ xử lý trên CPU/GPU di động.</p>
@@ -43,10 +49,6 @@
             <div class="card">
                 <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Linear Bottleneck</h3>
                 <p>Loại bỏ hàm kích hoạt phi tuyến tính ở lớp bottleneck hẹp giúp bảo toàn thông tin quan trọng của manifold đặc trưng, ngăn chặn sự sụp đổ của biểu diễn (representation collapse).</p>
-            </div>
-            <div class="card">
-                <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Mobile Efficiency</h3>
-                <p>Depthwise Separable Convolutions giúp giảm số lượng tham số và phép tính toán lên tới 8-9 lần so với tích chập thông thường mà vẫn giữ được độ chính xác cao.</p>
             </div>
         </section>
     </main>
