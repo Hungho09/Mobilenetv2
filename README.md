@@ -132,7 +132,7 @@ Nếu bạn có Docker, đây là cách đơn giản nhất để chạy toàn b
 
 ## ✍️ Tác giả & Tham khảo
 
-- **Tác giả:** [Tên của bạn]
+- **Tác giả:** [Hồ SỸ Mạnh Hùng]
 - **Nguồn:** Theo bài báo *"MobileNetV2: Inverted Residuals and Linear Bottlenecks"* (Sandler, Howard, et al. - Google Inc.)
 
 ---
